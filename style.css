@@ -7,3 +7,20 @@ body{
 #status{
    font-size:22px;
 }
+.heading1{
+   font-weight:bold;
+   font-size:30px;
+}
+#myModal{
+   background-color:white;
+}
+#footer{
+   background-color:rgb(96, 96, 96);
+   color:aliceblue;
+   opacity:0.5;
+   width:100%;
+   position:bottom;
+}
+#footer:hover{
+   opacity:1;
+}

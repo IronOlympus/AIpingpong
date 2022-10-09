@@ -1,6 +1,8 @@
 
-/*created by prashant shukla */
 
+/*created by prashant shukla */
+var wristY = 0;
+var wristX = 0;
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -35,6 +37,10 @@ function modelLoaded(){
   console.log('Model Loaded');
 }
 function gotPoses(results){
+  if(results.length > 0){
+    wristY = results[0].pose.rightWrist.y;
+    wristX = results[0].pose.rightWrist.x;
+  }
 }
 
 function draw(){
@@ -56,7 +62,7 @@ function draw(){
    fill(250,0,0);
     stroke(0,0,250);
     strokeWeight(0.5);
-   paddle1Y = mouseY; 
+   paddle1Y = wristY; 
    rect(paddle1X,paddle1Y,paddle1,paddle1Height,100);
    
    
@@ -174,3 +180,4 @@ function paddleInCanvas(){
     mouseY =0;
   }  
 }
+

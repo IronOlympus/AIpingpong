@@ -1,5 +1,4 @@
 
-
 /*created by prashant shukla */
 var wristY = 0;
 var wristX = 0;
@@ -22,7 +21,15 @@ var ball = {
     dx:3,
     dy:3
 }
-
+function restart(){
+  pcscore = 0;
+  playerscore = 0;
+  loop();
+}
+function preload(){
+  paddletouch = loadSound("ball_touch_paddel.wav")
+  missball = loadSound("missed.wav");
+}
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent('canvas');
@@ -135,11 +142,13 @@ function move(){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5;
     playerscore++;
+    paddletouch.play();
   }
   else{
     pcscore++;
     reset();
     navigator.vibrate(100);
+    missball.play();
   }
 }
 if(pcscore ==4){
@@ -150,7 +159,7 @@ if(pcscore ==4){
     stroke("white");
     textSize(25)
     text("Game Over!☹☹",width/2,height/2);
-    text("Reload The Page!",width/2,height/2+30)
+    text("Press Restart Button to Play Again",width/2,height/2+30)
     noLoop();
     pcscore = 0;
 }
@@ -180,4 +189,3 @@ function paddleInCanvas(){
     mouseY =0;
   }  
 }
-
